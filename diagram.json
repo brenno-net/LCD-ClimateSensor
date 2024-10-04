@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "author": "Brenno",
   "editor": "wokwi",
   "parts": [
@@ -8,9 +8,18 @@
     {
       "type": "wokwi-lcd1602",
       "id": "lcd1",
-      "top": 16,
+      "top": 35.2,
       "left": 946.4,
       "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -210.9, "left": 1098.6, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -43.2,
+      "left": 1093.85,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
     }
   ],
   "connections": [
@@ -21,7 +30,12 @@
     [ "lcd1:SDA", "uno:A4", "orange", [ "h0" ] ],
     [ "lcd1:SCL", "uno:A5", "blue", [ "h0" ] ],
     [ "lcd1:GND", "bb1:tn.1", "black", [ "h-19.2", "v-38.4" ] ],
-    [ "lcd1:VCC", "bb1:tp.1", "red", [ "h-28.8", "v-57.5" ] ]
+    [ "lcd1:VCC", "bb1:tp.1", "red", [ "h-28.8", "v-57.5" ] ],
+    [ "dht1:VCC", "bb1:tp.13", "red", [ "v0" ] ],
+    [ "dht1:GND", "bb1:tp.16", "black", [ "v0", "h9.6" ] ],
+    [ "dht1:SDA", "r1:1", "green", [ "h0.1", "v28.8" ] ],
+    [ "r1:1", "uno:7", "green", [ "h0" ] ],
+    [ "r1:2", "bb1:tp.14", "green", [ "h0" ] ]
   ],
   "dependencies": {}
 }
